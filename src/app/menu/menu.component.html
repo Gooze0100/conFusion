@@ -1,0 +1,15 @@
+<!-- nereikia isdestymui uzsimesti kad fxFlex butu taikomas -->
+<div class="container" fxLayout="column" fxLayoutGap="10px">
+  <!-- lista padaro -->
+  <mat-list fxFlex>
+    <mat-list-item *ngFor="let dish of dishes">
+      <!-- matlist avatar sukuria grazu avatara apvalu is nedideli :) -->
+      <img matListAvatar src="{{ dish.image }}" alt="{{ dish.name }}" />
+      <!-- cia jau viename liste padaro grazias naujas linijas salia avataro -->
+      <h1 matLine>{{ dish.name }}</h1>
+      <p matLine>
+        <span>{{ dish.description }}</span>
+      </p>
+    </mat-list-item>
+  </mat-list>
+</div>
