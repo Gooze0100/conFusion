@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // importuojam forma
 import { Dish } from '../shared/dish';
-import { DISHES } from '../shared/dishes';
+import { DishService } from '../services/dish.service';
 
 // const DISHES: Dish[] = [
 // {
@@ -57,10 +57,12 @@ import { DISHES } from '../shared/dishes';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
+// cia tipo implementuoja onInit tai jis reikalauja kad butu kaip part class idetas ir toks metodas
 export class MenuComponent implements OnInit {
   // cia typescript yra protingas ir automatiskai priskiria reiksme is pries tai buvusios reiksmes
   // dishes = DISHES;
-  public dishes: Dish[] = DISHES;
+  // public dishes: Dish[] = DISHES;
+  dishes!: Dish[];
   // [
   //   {
   //     id: '0',
@@ -111,11 +113,18 @@ export class MenuComponent implements OnInit {
 
   // cia nurodo kad i pirmaji bus nukreipta is tu visu dishes
   // selectedDish: Dish = DISHES[0];
-  public selectedDish!: Dish;
+  selectedDish!: Dish;
 
-  constructor() {}
+  // cia sukuria single dish service Object ir jis bus mums available sitame komponente
+  constructor(private dishService: DishService) {}
 
-  ngOnInit(): void {}
+  // cia pasinaudojam lifecycle metodu, kai ji paskelbiame savo aplikacijoje
+  // tai su situo onOnInit galima parasyti pafetchinti data, tai ivyks del to kad jis bus ivykdytas Angular framework kai sitas komponentas yra inicializuotas
+  // tai galima dishes pasiimti is services
+  ngOnInit(): void {
+    // cia dishes service supplyins mus su data kai kompoentas bus uzkrautas
+    this.dishes = this.dishService.getDishes();
+  }
 
   onSelect(dish: Dish) {
     this.selectedDish = dish;

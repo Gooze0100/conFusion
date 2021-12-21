@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import 'hammerjs';
 import { MenuComponent } from './menu/menu.component';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
+import { DishService } from './services/dish.service';
 
 @NgModule({
   // cia deklrajuoja view class tai cia aprasomos directive, pipes ir components
@@ -34,7 +35,9 @@ import { DishdetailComponent } from './dishdetail/dishdetail.component';
     MatButtonModule,
   ],
   // providers specified visus servisus kuriuos sitas konkreciai komponentas naudosis
-  providers: [],
+  // cia tipo jei norime kad visi komponentai matytu tai galime cai paskelbti service ir tada visi matys
+  // Angular cia naudoja dependency injection ir sukuria ta service paziurejes
+  providers: [DishService],
   // jei norime pamatyti tipo cia atspindi sitame index.html faile per musu main.ts atvaizduoja kas yra tame app component
   bootstrap: [AppComponent],
 })
