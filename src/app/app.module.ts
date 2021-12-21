@@ -16,10 +16,11 @@ import { MatButtonModule } from '@angular/material/button';
 
 import 'hammerjs';
 import { MenuComponent } from './menu/menu.component';
+import { DishdetailComponent } from './dishdetail/dishdetail.component';
 
 @NgModule({
   // cia deklrajuoja view class tai cia aprasomos directive, pipes ir components
-  declarations: [AppComponent, MenuComponent],
+  declarations: [AppComponent, MenuComponent, DishdetailComponent],
   // cia eina importai, nuo kuriu bus priklausoma musu aplikacija, kai importuojam jas reikia cia reikia jas aprasyti nuo ko bus dependant
   imports: [
     BrowserModule,

@@ -9,7 +9,8 @@
   <div fxFlex>
     <!-- cia kelis columns nurodom ir kokio aukscio bus eilutes -->
     <mat-grid-list cols="2" rowHeight="200px">
-      <mat-grid-tile *ngFor="let dish of dishes">
+      <!-- va cia sukureme handler -->
+      <mat-grid-tile *ngFor="let dish of dishes" (click)="onSelect(dish)">
         <!-- cia uzmetam auksti kad uzimtu visa musu column -->
         <img height="200px" src="{{ dish.image }}" alt="{{ dish.name }}" />
         <mat-grid-tile-footer>
@@ -34,7 +35,9 @@
   </mat-list> -->
   <!-- nurodom ar toks dish bus jei ne tada nerodys ir nebus pridetas i dom :) -->
   <div fxFlex *ngIf="selectedDish">
-    <mat-card>
+    <!-- add property of dish, cia permeta i kita komponenta -->
+    <app-dishdetail [dish]="selectedDish"></app-dishdetail>
+    <!-- <mat-card>
       <mat-card-header>
         <mat-card-title>
           <h3>{{ selectedDish.name | uppercase }}</h3>
@@ -47,13 +50,13 @@
       />
       <mat-card-content>
         <p>{{ selectedDish.description }}</p>
-      </mat-card-content>
-      <!-- cia tipo card actions tai tipo buttons tam tikri skirti cardams -->
-      <mat-card-actions>
+      </mat-card-content> -->
+    <!-- cia tipo card actions tai tipo buttons tam tikri skirti cardams -->
+    <!-- <mat-card-actions>
         <button mat-button>LIKE</button>
         <button mat-button>SHARE</button>
       </mat-card-actions>
-    </mat-card>
+    </mat-card>  -->
   </div>
 </div>
 
